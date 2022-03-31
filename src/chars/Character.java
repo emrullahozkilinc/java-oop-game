@@ -7,4 +7,13 @@ public abstract class Character {
     int hp;
     int gold;
 
+    @Override
+    public String toString() {
+        return "Character{" +
+                "ID=" + ID +
+                ", damage=" + damage +
+                ", hp=" + hp +
+                ", gold=" + gold +
+                '}';
+    }
 }
