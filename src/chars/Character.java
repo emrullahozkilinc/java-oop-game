@@ -1,5 +1,6 @@
 package chars;
 
+import areas.Area;
 import armor.Armor;
 import weapon.Weapon;
 
@@ -12,11 +13,41 @@ public abstract class Character {
     int block;
     Armor armor;
     Weapon weapon;
+    Area area;
 
     Character (){
         block = 0;
         armor = null;
         weapon = null;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+        block = armor.getBlock();
+    }
+    public void setWeapon(Weapon weapon) {
+        if(this.weapon != null) {
+            damage = getDamage() + weapon.getDamage() - this.weapon.getDamage();
+        }else {
+            damage = getDamage() + weapon.getDamage();
+        }
+        this.weapon = weapon;
+    }
+
+    public int getBlock() {
+        return block;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public Area getArea() {
+        return area;
     }
 
     @Override
@@ -27,25 +58,9 @@ public abstract class Character {
                 ", hp=" + hp +
                 ", gold=" + gold +
                 ", block=" + block +
-                ", armor=" + armor +
-                ", weapon=" + weapon +
+                ", armor=" + armor.getClass().getName() +
+                ", weapon=" + weapon.getClass().getName() +
+                ", area=" + area.getClass().getName() +
                 '}';
-    }
-
-    public void setArmor(Armor armor) {
-        this.armor = armor;
-        block = armor.getBlock();
-    }
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-        damage = getDamage() + weapon.getDamage() - this.weapon.getDamage();
-    }
-
-    public int getBlock() {
-        return block;
-    }
-
-    public int getDamage() {
-        return damage;
     }
 }

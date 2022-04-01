@@ -2,9 +2,11 @@ package areas;
 
 import armor.*;
 import chars.Character;
+import main.Game;
 import weapon.*;
 
 import static main.Game.getInput;
+import static main.Game.go;
 
 public class Shop extends SafeArea{
     Armor getArmor(ArmorType type){
@@ -30,7 +32,7 @@ public class Shop extends SafeArea{
     }
 
     @Override
-    void onLocation(Character character) {
+    public void onLocation(Character character) {
         System.out.println("Welcome to the shop!");
         System.out.println("What would you like to buy?");
         System.out.println("1. Armor");
@@ -71,6 +73,7 @@ public class Shop extends SafeArea{
             }
         }else if(choice == 3){
             System.out.println("You left the shop!");
+            go(character);
         }
     }
 }

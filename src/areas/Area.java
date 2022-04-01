@@ -3,5 +3,5 @@ package areas;
 import chars.Character;
 
 public abstract class Area {
-    abstract void onLocation(Character character);
+    public abstract void onLocation(Character character);
 }

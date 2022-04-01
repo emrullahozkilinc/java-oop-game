@@ -1,5 +1,9 @@
 package main;
 
+import areas.Cave;
+import areas.Jungle;
+import areas.River;
+import areas.Shop;
 import chars.*;
 import chars.Character;
 
@@ -24,7 +28,29 @@ public class Game {
             case 2:player = new Archer();break;
             case 3:player = new Knight();break;
         }
-        
+
+        go(player);
+    }
+
+    public static void go(Character player){
+
+        System.out.println("Where do you want to go?");
+        System.out.println("1-)Cave");
+        System.out.println("2-)Jungle");
+        System.out.println("3-)River");
+        System.out.println("4-)Shop");
+
+        short choose = getInput(1, 4);
+
+        switch(choose){
+            case 1:player.setArea(new Cave());break;
+            case 2:player.setArea(new Jungle());break;
+            case 3:player.setArea(new River());break;
+            case 4:player.setArea(new Shop());break;
+        }
+
+        player.getArea().onLocation(player);
+
         System.out.println(player.toString());
     }
 
