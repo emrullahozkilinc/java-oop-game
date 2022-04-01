@@ -1,5 +1,7 @@
 package areas;
 
-public abstract class Area {
+import chars.Character;
 
+public abstract class Area {
+    abstract void onLocation(Character character);
 }
