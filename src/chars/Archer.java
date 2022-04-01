@@ -8,4 +8,9 @@ public class Archer extends Character{
         super.hp = 18;
         super.gold = 20;
     }
+
+    @Override
+    public int defaultHP() {
+        return 18;
+    }
 }

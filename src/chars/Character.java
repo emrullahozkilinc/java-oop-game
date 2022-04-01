@@ -50,6 +50,16 @@ public abstract class Character {
         return area;
     }
 
+    public abstract int defaultHP();
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
     @Override
     public String toString() {
         return "Character{" +
@@ -58,9 +68,10 @@ public abstract class Character {
                 ", hp=" + hp +
                 ", gold=" + gold +
                 ", block=" + block +
-                ", armor=" + armor.getClass().getName() +
-                ", weapon=" + weapon.getClass().getName() +
-                ", area=" + area.getClass().getName() +
+                ", armor=" + armor +
+                ", weapon=" + weapon +
+                ", area=" + area +
                 '}';
     }
+
 }

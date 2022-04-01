@@ -8,4 +8,9 @@ public class Knight extends Character{
         super.hp = 24;
         super.gold = 5;
     }
+
+    @Override
+    public int defaultHP() {
+        return 24;
+    }
 }

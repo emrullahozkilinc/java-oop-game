@@ -8,4 +8,9 @@ public class Samurai extends Character{
         super.hp = 21;
         super.gold = 15;
     }
+
+    @Override
+    public int defaultHP() {
+        return 21;
+    }
 }

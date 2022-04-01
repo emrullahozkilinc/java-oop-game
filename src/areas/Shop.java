@@ -55,6 +55,7 @@ public class Shop extends SafeArea{
                 System.out.println("You bought a medium armor!");
                 character.setArmor(getArmor(ArmorType.MEDIUM));
             }
+
         }else if(choice == 2){
             System.out.println("What type of weapon would you like to buy?");
             System.out.println("1. Rifle");
@@ -73,7 +74,7 @@ public class Shop extends SafeArea{
             }
         }else if(choice == 3){
             System.out.println("You left the shop!");
-            go(character);
         }
+        go(character);
     }
 }

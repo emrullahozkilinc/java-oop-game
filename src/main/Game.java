@@ -1,9 +1,6 @@
 package main;
 
-import areas.Cave;
-import areas.Jungle;
-import areas.River;
-import areas.Shop;
+import areas.*;
 import chars.*;
 import chars.Character;
 
@@ -39,14 +36,16 @@ public class Game {
         System.out.println("2-)Jungle");
         System.out.println("3-)River");
         System.out.println("4-)Shop");
+        System.out.println("5-)Safe Zone");
 
-        short choose = getInput(1, 4);
+        short choose = getInput(1, 5);
 
         switch(choose){
             case 1:player.setArea(new Cave());break;
             case 2:player.setArea(new Jungle());break;
             case 3:player.setArea(new River());break;
             case 4:player.setArea(new Shop());break;
+            case 5:player.setArea(new SafetyHome());break;
         }
 
         player.getArea().onLocation(player);
