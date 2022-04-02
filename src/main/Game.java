@@ -54,17 +54,18 @@ public class Game {
     }
 
 
-
     public static short getInput(int min, int max){
         short choose = 0;
-        try{
-            choose = new Scanner(System.in).nextShort();
-            if(choose < min || choose > max)
-                throw new InputMismatchException();
-        }catch(InputMismatchException e){
-            System.out.println("Invalid input, try again");
-            choose = getInput(min, max);
-        }
+        do{
+            try{
+                choose = new Scanner(System.in).nextShort();
+                if(choose < min || choose > max)
+                    throw new InputMismatchException();
+            }catch(InputMismatchException e){
+                System.out.println("Invalid input, try again");
+            }
+        }while(choose < min || choose > max);
+
         return choose;
     }
 }

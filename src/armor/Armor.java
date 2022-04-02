@@ -8,4 +8,8 @@ public abstract class Armor {
     public int getBlock() {
         return block;
     }
+
+    public int getGold() {
+        return gold;
+    }
 }

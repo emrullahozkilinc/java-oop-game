@@ -60,6 +60,14 @@ public abstract class Character {
         return hp;
     }
 
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
     @Override
     public String toString() {
         return "Character{" +

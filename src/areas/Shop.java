@@ -45,15 +45,20 @@ public class Shop extends SafeArea{
             System.out.println("2. Light");
             System.out.println("3. Medium");
             choice = getInput(1, 3);
+            Armor ar = null;
             if(choice == 1){
-                System.out.println("You bought a heavy armor!");
-                character.setArmor(getArmor(ArmorType.HEAVY));
+                ar = getArmor(ArmorType.HEAVY);
             }else if(choice == 2){
-                System.out.println("You bought a light armor!");
-                character.setArmor(getArmor(ArmorType.LIGHT));
+                ar = getArmor(ArmorType.LIGHT);
             }else if(choice == 3){
-                System.out.println("You bought a medium armor!");
-                character.setArmor(getArmor(ArmorType.MEDIUM));
+                ar = getArmor(ArmorType.MEDIUM);
+            }
+            if(character.getGold() >= ar.getGold()){
+                character.setGold(character.getGold() - ar.getGold());
+                character.setArmor(ar);
+                System.out.println("You bought " + ar.getClass().getName() + " for " + ar.getGold() + " gold!");
+            }else{
+                System.out.println("You don't have enough gold!");
             }
 
         }else if(choice == 2){
@@ -62,19 +67,27 @@ public class Shop extends SafeArea{
             System.out.println("2. Pistol");
             System.out.println("3. Sword");
             choice = getInput(1, 3);
+            Weapon w = null;
             if(choice == 1){
-                System.out.println("You bought a rifle!");
-                character.setWeapon(getWeapon(WeaponType.RIFLE));
+                w = getWeapon(WeaponType.RIFLE);
             }else if(choice == 2){
-                System.out.println("You bought a pistol!");
-                character.setWeapon(getWeapon(WeaponType.PISTOL));
+                w = getWeapon(WeaponType.PISTOL);
             }else if(choice == 3){
-                System.out.println("You bought a sword!");
-                character.setWeapon(getWeapon(WeaponType.SWORD));
+                w = getWeapon(WeaponType.SWORD);
+            }
+
+            if(character.getGold() >= w.getGold()){
+                character.setGold(character.getGold() - w.getGold());
+                character.setWeapon(w);
+                System.out.println("You bought " + w.getClass().getName() + " for " + w.getGold() + " gold!");
+            }else{
+                System.out.println("You don't have enough gold!");
             }
         }else if(choice == 3){
             System.out.println("You left the shop!");
         }
         go(character);
     }
+
+
 }
