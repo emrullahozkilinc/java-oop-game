@@ -25,8 +25,9 @@ public class Game {
             case 2:player = new Archer();break;
             case 3:player = new Knight();break;
         }
-
-        go(player);
+        while (true) {
+            go(player);
+        }
     }
 
     public static void go(Character player){

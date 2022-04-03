@@ -86,7 +86,6 @@ public class Shop extends SafeArea{
         }else if(choice == 3){
             System.out.println("You left the shop!");
         }
-        go(character);
     }
 
 

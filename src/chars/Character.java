@@ -2,7 +2,10 @@ package chars;
 
 import areas.Area;
 import armor.Armor;
+import items.Item;
 import weapon.Weapon;
+
+import java.util.LinkedList;
 
 public abstract class Character {
 
@@ -14,11 +17,13 @@ public abstract class Character {
     Armor armor;
     Weapon weapon;
     Area area;
+    LinkedList<Item> items;
 
     Character (){
         block = 0;
         armor = null;
         weapon = null;
+        items = new LinkedList<>();
     }
 
     public void setArmor(Armor armor) {
@@ -66,6 +71,15 @@ public abstract class Character {
 
     public int getGold() {
         return gold;
+    }
+
+    public void addItem(Item item) {
+        if (!items.contains(item))
+            items.add(item);
+    }
+
+    public boolean checkItem() {
+        return items.size() == 3;
     }
 
     @Override
