@@ -41,7 +41,6 @@ public abstract class DangerArea extends Area{
                 break;
             }
         }while (character.getHp() > 0 && monster[0].getHp() > 0);
-
     }
 
     @Override

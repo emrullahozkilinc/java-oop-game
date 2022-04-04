@@ -3,6 +3,9 @@ package main;
 import areas.*;
 import chars.*;
 import chars.Character;
+import items.Firewood;
+import items.Food;
+import items.Water;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -42,11 +45,30 @@ public class Game {
         short choose = getInput(1, 5);
 
         switch(choose){
-            case 1:player.setArea(new Cave());break;
-            case 2:player.setArea(new Jungle());break;
-            case 3:player.setArea(new River());break;
-            case 4:player.setArea(new Shop());break;
-            case 5:player.setArea(new SafetyHome());break;
+            case 1:
+                if(player.getItems().contains(new Food()))
+                    System.out.println("You already have food, you can't go to the cave");
+                else
+                    player.setArea(new Cave());
+                break;
+            case 2:
+                if(player.getItems().contains(new Firewood()))
+                    System.out.println("You already have firewood, you can't go to the jungle");
+                else
+                    player.setArea(new Jungle());
+                break;
+            case 3:
+                if(player.getItems().contains(new Water()))
+                    System.out.println("You already have water, you can't go to the river");
+                else
+                    player.setArea(new River());
+                break;
+            case 4:
+                player.setArea(new Shop());
+                break;
+            case 5:
+                player.setArea(new SafetyHome());
+                break;
         }
 
         player.getArea().onLocation(player);

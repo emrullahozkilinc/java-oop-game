@@ -85,6 +85,10 @@ public abstract class Character {
         return items.size() == 3;
     }
 
+    public LinkedList<Item> getItems() {
+        return items;
+    }
+
     @Override
     public String toString() {
         return "Character{" +
