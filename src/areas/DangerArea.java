@@ -12,6 +12,8 @@ public abstract class DangerArea extends Area{
 
     void war(Character character, Monster[] monster){
         do{
+            System.out.println("There are "+ monster.length+" monsters in this area.");
+            System.out.println(monsterInfo(monster));
             System.out.println("1. Attack");
             System.out.println("2. Run");
             int choice = Game.getInput(1,2);
@@ -19,15 +21,15 @@ public abstract class DangerArea extends Area{
             if(choice == 1){
                 for (Monster m : monster) {
                         m.setHp(m.getHp() - character.getDamage());
-                        character.setHp(character.getHp() - m.getDamage());
+                        character.setHp(character.getHp() - (m.getDamage() - ((m.getDamage()-character.getBlock()<0)?0:character.getBlock())));
                         if (m.getHp() <= 0) {
-                            System.out.println("You killed " + m.getClass().getSimpleName()+". And got "+m.getGold()+" gold");
+                            System.out.println("You killed " + m.getClass().getSimpleName()+". And got "+ m.getGold()+" gold");
                             character.setGold(character.getGold() + m.getGold());
                         }else if(character.getHp() <= 0){
                             System.out.println("You died");
                             break;
                         }
-                        if(m.getHp() >= 0){
+                        if(m.getHp() > 0){
                             isFinish = false;
                         }
                 }
@@ -54,5 +56,18 @@ public abstract class DangerArea extends Area{
         }
     }
 
-    abstract void getItems(Character character);
+    void getItems(Character character){
+        if(character.checkItem()){
+            System.out.println("You won!");
+            System.exit(0);
+        }
+    }
+
+    String monsterInfo(Monster[] monster){
+        String info = "";
+        for (Monster m : monster) {
+            info += m.getClass().getSimpleName()+" : "+m.getHp()+"\n";
+        }
+        return info;
+    }
 }

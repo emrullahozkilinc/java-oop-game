@@ -2,11 +2,9 @@ package areas;
 
 import armor.*;
 import chars.Character;
-import main.Game;
 import weapon.*;
 
 import static main.Game.getInput;
-import static main.Game.go;
 
 public class Shop extends SafeArea{
     Armor getArmor(ArmorType type){

@@ -14,7 +14,7 @@ import static main.Game.getInput;
 public class Cave extends DangerArea{
 
     public Cave() {
-        super.monster = new Zombie[new Random().nextInt(2)+1];
+        super.monster = new Zombie[new Random().nextInt(3)+1];
         for (int i = 0; i < super.monster.length; i++) {
             super.monster[i] = new Zombie();
         }
@@ -23,9 +23,6 @@ public class Cave extends DangerArea{
     @Override
     void getItems(Character character) {
         character.addItem(new Food());
-        if(character.checkItem()){
-            System.out.println("You won!");
-            System.exit(0);
-        }
+        super.getItems(character);
     }
 }

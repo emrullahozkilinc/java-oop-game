@@ -21,4 +21,14 @@ public abstract class Monster {
     public int getGold() {
         return gold;
     }
+
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "ID=" + ID +
+                ", damage=" + damage +
+                ", hp=" + hp +
+                ", gold=" + gold +
+                '}';
+    }
 }

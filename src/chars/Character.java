@@ -30,6 +30,7 @@ public abstract class Character {
         this.armor = armor;
         block = armor.getBlock();
     }
+
     public void setWeapon(Weapon weapon) {
         if(this.weapon != null) {
             damage = getDamage() + weapon.getDamage() - this.weapon.getDamage();
@@ -74,8 +75,10 @@ public abstract class Character {
     }
 
     public void addItem(Item item) {
-        if (!items.contains(item))
+        if (!items.contains(item)){
             items.add(item);
+            System.out.println("You got " + item.getClass().getSimpleName());
+        }
     }
 
     public boolean checkItem() {
@@ -90,10 +93,10 @@ public abstract class Character {
                 ", hp=" + hp +
                 ", gold=" + gold +
                 ", block=" + block +
-                ", armor=" + armor +
-                ", weapon=" + weapon +
-                ", area=" + area +
+                ", armor=" + ((armor==null)?null:armor.toString()) +
+                ", weapon=" + ((weapon==null)?null:weapon.toString()) +
+                ", area=" + ((area==null)?null:area.toString()) +
+                ", items=" + ((items==null)?null:items.toString()) +
                 '}';
     }
-
 }

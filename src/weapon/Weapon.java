@@ -16,4 +16,13 @@ public abstract class Weapon {
     public int getGold() {
         return gold;
     }
+
+    @Override
+    public String toString() {
+        return "Weapon{" +
+                "id=" + id +
+                ", damage=" + damage +
+                ", gold=" + gold +
+                '}';
+    }
 }
