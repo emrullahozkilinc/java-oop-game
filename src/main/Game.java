@@ -46,20 +46,26 @@ public class Game {
 
         switch(choose){
             case 1:
-                if(player.getItems().contains(new Food()))
+                if(player.getItems().contains(new Food())){
                     System.out.println("You already have food, you can't go to the cave");
+                    return;
+                }
                 else
                     player.setArea(new Cave());
                 break;
             case 2:
-                if(player.getItems().contains(new Firewood()))
+                if(player.getItems().contains(new Firewood())){
                     System.out.println("You already have firewood, you can't go to the jungle");
+                    return;
+                }
                 else
                     player.setArea(new Jungle());
                 break;
             case 3:
-                if(player.getItems().contains(new Water()))
+                if(player.getItems().contains(new Water())){
                     System.out.println("You already have water, you can't go to the river");
+                    return;
+                }
                 else
                     player.setArea(new River());
                 break;

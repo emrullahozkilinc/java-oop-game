@@ -11,6 +11,14 @@ public abstract class DangerArea extends Area{
     Monster[] monster;
 
     void war(Character character, Monster[] monster){
+        if(Math.random()>0.5){
+            System.out.println("Monster attack!");
+            character.setHp(character.getHp() - (monster.length*monster[0].getDamage() - ((monster.length*monster[0].getDamage()-character.getBlock()<0)?0:character.getBlock())));
+            if(character.getHp() <= 0){
+                System.out.println("You died");
+                System.exit(0);
+            }
+        }
         do{
             System.out.println("There are "+ monster.length+" monsters in this area.");
             System.out.println(monsterInfo(monster));
@@ -25,16 +33,17 @@ public abstract class DangerArea extends Area{
                         if (m.getHp() <= 0) {
                             System.out.println("You killed " + m.getClass().getSimpleName()+". And got "+ m.getGold()+" gold");
                             character.setGold(character.getGold() + m.getGold());
-                        }else if(character.getHp() <= 0){
+                        }
+                        if(character.getHp() <= 0){
                             System.out.println("You died");
-                            break;
+                            System.exit(0);
                         }
                         if(m.getHp() > 0){
                             isFinish = false;
                         }
                 }
             }else if(choice == 2){
-                break;
+                return;
             }
             if(isFinish){
                 getItems(character);
