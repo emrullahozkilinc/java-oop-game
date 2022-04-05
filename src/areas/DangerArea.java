@@ -11,6 +11,7 @@ public abstract class DangerArea extends Area{
     Monster[] monster;
 
     void war(Character character, Monster[] monster){
+        System.out.println("There are "+ monster.length+" monsters in this area.");
         if(Math.random()>0.5){
             System.out.println("Monster attack!");
             character.setHp(character.getHp() - (monster.length*monster[0].getDamage() - ((monster.length*monster[0].getDamage()-character.getBlock()<0)?0:character.getBlock())));
@@ -20,7 +21,6 @@ public abstract class DangerArea extends Area{
             }
         }
         do{
-            System.out.println("There are "+ monster.length+" monsters in this area.");
             System.out.println(monsterInfo(monster));
             System.out.println("1. Attack");
             System.out.println("2. Run");
@@ -28,19 +28,19 @@ public abstract class DangerArea extends Area{
             boolean isFinish = true;
             if(choice == 1){
                 for (Monster m : monster) {
-                        m.setHp(m.getHp() - character.getDamage());
-                        character.setHp(character.getHp() - (m.getDamage() - ((m.getDamage()-character.getBlock()<0)?0:character.getBlock())));
-                        if (m.getHp() <= 0) {
-                            System.out.println("You killed " + m.getClass().getSimpleName()+". And got "+ m.getGold()+" gold");
-                            character.setGold(character.getGold() + m.getGold());
-                        }
-                        if(character.getHp() <= 0){
-                            System.out.println("You died");
-                            System.exit(0);
-                        }
-                        if(m.getHp() > 0){
-                            isFinish = false;
-                        }
+                    m.setHp(m.getHp() - character.getDamage());
+                    character.setHp(character.getHp() - (m.getDamage() - ((m.getDamage()-character.getBlock()<0)?0:character.getBlock())));
+                    if (m.getHp() <= 0) {
+                        System.out.println("You killed " + m.getClass().getSimpleName());
+                        loot(character,m);
+                    }
+                    if(character.getHp() <= 0){
+                        System.out.println("You died");
+                        System.exit(0);
+                    }
+                    if(m.getHp() > 0){
+                        isFinish = false;
+                    }
                 }
             }else if(choice == 2){
                 return;
@@ -77,5 +77,9 @@ public abstract class DangerArea extends Area{
             info += m.getClass().getSimpleName()+" : "+m.getHp()+"\n";
         }
         return info;
+    }
+
+    void loot(Character character, Monster monster){
+        monster.takeItems(character);
     }
 }

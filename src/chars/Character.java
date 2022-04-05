@@ -74,6 +74,10 @@ public abstract class Character {
         return gold;
     }
 
+    public void addGold(int gold){
+        this.gold += gold;
+    }
+
     public void addItem(Item item) {
         if (!items.contains(item)){
             items.add(item);

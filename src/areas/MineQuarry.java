@@ -9,7 +9,7 @@ import java.util.Random;
 public class MineQuarry extends DangerArea {
 
     public MineQuarry() {
-        super.monster = new Vampire[new Random().nextInt(5)+1];
+        super.monster = new Snake[new Random().nextInt(5)+1];
         for (int i = 0; i < super.monster.length; i++) {
             super.monster[i] = new Snake();
         }

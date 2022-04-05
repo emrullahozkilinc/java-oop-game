@@ -39,10 +39,11 @@ public class Game {
         System.out.println("1-)Cave");
         System.out.println("2-)Jungle");
         System.out.println("3-)River");
-        System.out.println("4-)Shop");
-        System.out.println("5-)Safe Zone");
+        System.out.println("4-)Mine Quarry");
+        System.out.println("5-)Shop");
+        System.out.println("6-)Safe Zone");
 
-        short choose = getInput(1, 5);
+        short choose = getInput(1, 6);
 
         switch(choose){
             case 1:
@@ -70,9 +71,12 @@ public class Game {
                     player.setArea(new River());
                 break;
             case 4:
-                player.setArea(new Shop());
+                player.setArea(new MineQuarry());
                 break;
             case 5:
+                player.setArea(new Shop());
+                break;
+            case 6:
                 player.setArea(new SafetyHome());
                 break;
         }

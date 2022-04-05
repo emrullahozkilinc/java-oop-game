@@ -1,5 +1,6 @@
 package monster;
 
+import chars.Character;
 import items.Item;
 
 public abstract class Monster {
@@ -32,5 +33,10 @@ public abstract class Monster {
                 ", hp=" + hp +
                 ", gold=" + gold +
                 '}';
+    }
+
+    public void takeItems(Character character) {
+        System.out.println("You got " + gold + " gold.");
+        character.addGold(gold);
     }
 }
