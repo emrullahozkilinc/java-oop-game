@@ -1,5 +1,7 @@
 package monster;
 
+import items.Item;
+
 public abstract class Monster {
     long ID;
     int damage;
